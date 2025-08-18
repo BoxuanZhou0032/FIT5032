@@ -37,14 +37,24 @@
                   type="checkbox"
                   class="form-check-input"
                   id="isAustralian"
+                  @blur="() => validateResident(true)"
+                  @input="() => validateResident(false)"
                   v-model="formData.isAustralian"
                 />
+                <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
               <label for="gender" class="form-label">Gender</label>
-              <select class="form-select" id="gender" required v-model="formData.gender">
+              <select
+                class="form-select"
+                id="gender"
+                @blur="() => validateGender(true)"
+                @input="() => validateGender(false)"
+                v-model="formData.gender"
+              >
+                <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -106,7 +116,8 @@ const submittedCards = ref([])
 
 const submitForm = () => {
   validateName(true)
-  if (!errors.value.username) {
+  validatePassword(true)
+  if (!errors.value.username && !errors.value.password) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
   }
@@ -158,6 +169,28 @@ const validatePassword = (blur) => {
     if (blur) errors.value.password = 'Password must contain at least one special character.'
   } else {
     errors.value.password = null
+  }
+}
+
+const validateResident = (blur) => {
+  if (!formData.value.isAustralian) {
+    if (blur) errors.value.resident = 'You must be an Australian resident to submit this form.'
+  } else {
+    errors.value.resident = null
+  }
+}
+const validateGender = (blur) => {
+  if (!formData.value.gender) {
+    if (blur) errors.value.resident = 'you must select a gender.'
+  } else {
+    errors.value.gender = null
+  }
+}
+const validateReason = (blur) => {
+  if (!formData.value.reason) {
+    if (blur) errors.value.reason = 'Reason for joining is required.'
+  } else {
+    errors.value.reason = null
   }
 }
 </script>
