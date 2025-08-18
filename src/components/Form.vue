@@ -67,8 +67,11 @@
               class="form-control"
               id="reason"
               rows="3"
+              @blur="() => validateReason(true)"
+              @input="() => validateReason(false)"
               v-model="formData.reason"
             ></textarea>
+            <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
