@@ -41,8 +41,8 @@
                   @input="() => validateResident(false)"
                   v-model="formData.isAustralian"
                 />
-                <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
+                <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -54,11 +54,11 @@
                 @input="() => validateGender(false)"
                 v-model="formData.gender"
               >
-                <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+              <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
             </div>
           </div>
           <div class="mb-3">
@@ -120,7 +120,16 @@ const submittedCards = ref([])
 const submitForm = () => {
   validateName(true)
   validatePassword(true)
-  if (!errors.value.username && !errors.value.password) {
+  validateResident(true)
+  validateGender(true)
+  validateReason(true)
+  if (
+    !errors.value.username &&
+    !errors.value.password &&
+    !errors.value.resident &&
+    !errors.value.gender &&
+    !errors.value.reason
+  ) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
   }
@@ -184,7 +193,7 @@ const validateResident = (blur) => {
 }
 const validateGender = (blur) => {
   if (!formData.value.gender) {
-    if (blur) errors.value.resident = 'you must select a gender.'
+    if (blur) errors.value.gender = 'you must select a gender.'
   } else {
     errors.value.gender = null
   }
