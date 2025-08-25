@@ -18,6 +18,21 @@
               <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
             </div>
             <div class="col-md-6 col-sm-6">
+              <label for="gender" class="form-label">Gender</label>
+              <select
+                class="form-select"
+                id="gender"
+                @blur="() => validateGender(true)"
+                @input="() => validateGender(false)"
+                v-model="formData.gender"
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+              <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
+            </div>
+            <div class="col-md-6 col-sm-6">
               <label for="password" class="form-label">Password</label>
               <input
                 type="password"
@@ -25,6 +40,16 @@
                 id="password"
                 @blur="() => validatePassword(true)"
                 @input="() => validatePassword(false)"
+                v-model="formData.password"
+              />
+              <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <label for="confirm-password" class="form-label">ConfirmPassword</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirm-password"
                 v-model="formData.password"
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
@@ -44,21 +69,6 @@
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
                 <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
               </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <label for="gender" class="form-label">Gender</label>
-              <select
-                class="form-select"
-                id="gender"
-                @blur="() => validateGender(true)"
-                @input="() => validateGender(false)"
-                v-model="formData.gender"
-              >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-              <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
             </div>
           </div>
           <div class="mb-3">
@@ -102,6 +112,7 @@ import Column from 'primevue/column'
 const formData = ref({
   username: '',
   password: '',
+  confirmPassword: '',
   isAustralian: false,
   reason: '',
   gender: '',
