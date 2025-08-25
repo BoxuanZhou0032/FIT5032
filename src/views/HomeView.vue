@@ -46,12 +46,13 @@
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
             </div>
             <div class="col-md-6 col-sm-6">
-              <label for="confirm-password" class="form-label">ConfirmPassword</label>
+              <label for="confirm-password" class="form-label">Confirm Password</label>
               <input
                 type="password"
                 class="form-control"
                 id="confirm-password"
-                v-model="formData.password"
+                v-model="formData.confirmPassword"
+                @blur="() => validateConfirmPassword(true)"
               />
               <div v-if="errors.confirmPassword" class="text-danger">
                 {{ errors.confirmPassword }}
@@ -85,6 +86,13 @@
               v-model="formData.reason"
             ></textarea>
             <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
+            <div v-else-if="formData.reason.toLowerCase().includes('friend')" class="text-success">
+              Great to have a friend
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="reason" class="form-label">Suburb</label>
+            <input type="text" class="form-control" id="suburb" v-bind:value="formData.suburb" />
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -119,6 +127,7 @@ const formData = ref({
   isAustralian: false,
   reason: '',
   gender: '',
+  suburb: 'Clayton',
 })
 
 const submittedCards = ref([])
