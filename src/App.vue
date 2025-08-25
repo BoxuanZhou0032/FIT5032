@@ -1,6 +1,7 @@
 <script setup>
 import JSON from './components/JSON.vue'
 import Form from './views/HomeView.vue'
+import BHeader from './components/BHeader.vue'
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import Form from './views/HomeView.vue'
     <header>
       <BHeader />
     </header>
+
     <main class="main-box">
       <router-view></router-view>
     </main>
