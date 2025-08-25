@@ -1,6 +1,4 @@
 <script setup>
-import JSON from './components/JSON.vue'
-import Form from './views/HomeView.vue'
 import BHeader from './components/BHeader.vue'
 </script>
 
