@@ -1,16 +1,38 @@
 <template>
-  <div>
-    <h1>Add Book</h1>
-    <form @submit.prevent="addBook">
-      <div>
-        <label for="isbn">ISBN:</label>
-        <input type="text" v-model="isbn" id="isbn" required />
+  <div class="add-book container mt-5 p-4 shadow rounded bg-light">
+    <h2 class="mb-4 text-center">➕ Add New Book</h2>
+
+    <form @submit.prevent="addBook" class="row g-3">
+      <!-- ISBN -->
+      <div class="col-12">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input
+          type="text"
+          v-model="isbn"
+          id="isbn"
+          class="form-control"
+          placeholder="Enter book ISBN"
+          required
+        />
       </div>
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" v-model="name" id="name" required />
+
+      <!-- Name -->
+      <div class="col-12">
+        <label for="name" class="form-label">Book Name</label>
+        <input
+          type="text"
+          v-model="name"
+          id="name"
+          class="form-control"
+          placeholder="Enter book name"
+          required
+        />
       </div>
-      <button type="submit">Add Book</button>
+
+      <!-- Submit Button -->
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary px-4">Add Book</button>
+      </div>
     </form>
   </div>
 </template>
