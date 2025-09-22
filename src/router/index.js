@@ -6,7 +6,7 @@ import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import AddBookView from '@/views/AddBookView.vue'
 import LogoutView from '@/views/LogoutView.vue'
 import AdminView from '@/views/AdminView.vue'
-
+import GetBookCountView from '@/views/GetBookCountView.vue'
 import { getAuth } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import db from '../firebase/init.js'
@@ -47,6 +47,11 @@ const routes = [
     name: 'Admin',
     component: AdminView,
     meta: { requiresRole: 'admin' },
+  },
+  {
+    path: '/GetBookCount',
+    name: 'GetBookCount',
+    component: GetBookCountView,
   },
 ]
 
