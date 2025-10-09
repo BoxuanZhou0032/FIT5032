@@ -27,7 +27,9 @@ export default {
       this.loading = true
       this.error = null
       try {
-        const response = await axios.get('https://api.example.com/bookcount')
+        const response = await axios.get(
+          'https://us-central1-week7-boxuan.cloudfunctions.net/countBooks',
+        )
         this.bookCount = response.data.count
       } catch (error) {
         this.error = 'Failed to fetch book count. Please try again later.'

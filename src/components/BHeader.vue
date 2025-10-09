@@ -15,31 +15,42 @@
             >Get Book Count</router-link
           >
         </li>
+        <li class="nav-item">
+          <router-link to="/WeatherCheck" class="nav-link" active-class="active"
+            >Weather Check</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/CountBookAPI" class="nav-link" active-class="active"
+            >Count Book API</router-link
+          >
+          <template v-if="!user">
+            <li class="nav-item">
+              <router-link to="/Firelogin" class="nav-link" active-class="active"
+                >Sign in</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link to="/FireRegister" class="nav-link" active-class="active">
+                Register
+              </router-link>
+            </li>
+          </template>
 
-        <template v-if="!user">
-          <li class="nav-item">
-            <router-link to="/Firelogin" class="nav-link" active-class="active"
-              >Sign in</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/FireRegister" class="nav-link" active-class="active">
-              Register
-            </router-link>
-          </li>
-        </template>
-
-        <template v-else>
-          <li class="nav-item">
-            <router-link to="/addBook" class="nav-link" active-class="active">Add Book</router-link>
-          </li>
-          <li class="nav-item" v-if="role === 'admin'">
-            <router-link to="/admin" class="nav-link" active-class="active">Admin</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/logout" class="nav-link" active-class="active">Logout</router-link>
-          </li>
-        </template>
+          <template v-else>
+            <li class="nav-item">
+              <router-link to="/addBook" class="nav-link" active-class="active"
+                >Add Book</router-link
+              >
+            </li>
+            <li class="nav-item" v-if="role === 'admin'">
+              <router-link to="/admin" class="nav-link" active-class="active">Admin</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/logout" class="nav-link" active-class="active">Logout</router-link>
+            </li>
+          </template>
+        </li>
       </ul>
     </header>
   </div>

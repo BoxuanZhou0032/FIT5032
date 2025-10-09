@@ -10,12 +10,24 @@ import GetBookCountView from '@/views/GetBookCountView.vue'
 import { getAuth } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import db from '../firebase/init.js'
+import WeatherView from '@/views/WeatherView.vue'
+import CountBookAPI from '@/views/CountBookAPI.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomeView,
+  },
+  {
+    path: '/CountBookAPI',
+    name: 'CountBookAPI',
+    component: CountBookAPI,
+  },
+  {
+    path: '/WeatherCheck',
+    name: 'WeatherCheck',
+    component: WeatherView,
   },
   {
     path: '/about',
