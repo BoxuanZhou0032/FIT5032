@@ -4,7 +4,6 @@
 
 <script>
 import axios from 'axios'
-import { json } from 'express'
 
 export default {
   data() {

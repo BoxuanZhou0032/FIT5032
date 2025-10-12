@@ -49,3 +49,19 @@ exports.countBooks = onRequest((req, res) => {
     }
   })
 })
+
+exports.getAllBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const snapshot = await admin.firestore().collection('books').get()
+      const books = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      res.status(200).json(books)
+    } catch (error) {
+      console.error('Error getting all books:', error.message)
+      res.status(500).send('Error getting all books')
+    }
+  })
+})
