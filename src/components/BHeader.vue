@@ -7,7 +7,7 @@
             Home
           </router-link>
         </li>
-
+        <!-- go Home -->
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active"> About </router-link>
         </li>
