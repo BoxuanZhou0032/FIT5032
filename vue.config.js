@@ -1,3 +1,3 @@
-export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/FIT5032/' : '/',
-})
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+}
